@@ -15,6 +15,7 @@ import pprint
 from .models import Article
 from .serializers import ArticleSerializer
 
+
 class ArticleGenericViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin,
                             mixins.UpdateModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ArticleSerializer
@@ -70,6 +71,7 @@ class GenericAPIView(generics.GenericAPIView, mixins.ListModelMixin, mixins.Crea
     queryset = Article.objects.all()
 
     lookup_field = 'id'
+
     # authentication_classes = [SessionAuthentication, BasicAuthentication]
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
@@ -181,6 +183,7 @@ def article_detail(request, pk):
     elif request.method == "DELETE":
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class ApiGenericView(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer

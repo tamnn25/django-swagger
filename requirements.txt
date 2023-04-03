@@ -1,3 +1,5 @@
 django
 djangorestframework
 drf_yasg
+djoser==0.4.1
+psycopg2-binary

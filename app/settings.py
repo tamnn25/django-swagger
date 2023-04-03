@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -42,7 +43,11 @@ INSTALLED_APPS = [
     'drf_yasg',
     'post',
     'crud',
+    'djoser',
+    'rest_framework.authtoken',
+    'channels',
 ]
+ASGI_APPLICATION = 'ChatApp.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,10 +84,18 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'bookclubz',
+            'USER': 'bookclubz',
+            'PASSWORD': 'bookclubz',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
 }
 
 

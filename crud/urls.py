@@ -1,4 +1,3 @@
-
 from django.urls import path, include
 from .views import *
 from rest_framework.routers import DefaultRouter
@@ -21,9 +20,7 @@ urlpatterns = [
     path('generic/article/', GenericAPIView.as_view()),
     path('generic/article/<int:id>/', GenericAPIView.as_view()),
 
-    path('api/v2/', ApiGenericView.as_view({'get':'list', 'post':'create'})),
-    path('api/v2/<int:pk>', ApiGenericView.as_view({'get':'retrieve', 'put':'update','delete':"destroy"}))
+    path('api/v2/', ApiGenericView.as_view({'get': 'list', 'post': 'create'})),
+    path('api/v2/<int:pk>', ApiGenericView.as_view({'get': 'retrieve', 'put': 'update', 'delete': "destroy"}))
 
 ]
-
-

@@ -1,4 +1,6 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 class Post(models.Model):
@@ -7,7 +9,6 @@ class Post(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now_add=True)
-
 
     def __str__(self):
         return self.title
@@ -22,3 +23,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.post.title
+
+
+@receiver(post_save, sender=Comment)
+def _post_save_receiver(sender, **kwargs):
+    print("receiver-comment")
