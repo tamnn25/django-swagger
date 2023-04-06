@@ -6,6 +6,8 @@ class Article(models.Model):
     author = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
+    description = models.TextField(null=True)
+
 
     def __str__(self):
         return f"{self.title}, {self.author}, {self.email}"
